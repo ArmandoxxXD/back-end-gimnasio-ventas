@@ -1,0 +1,76 @@
+@api = http://localhost:3000/api/CorteDiarioAdd/
+@api2=http://localhost:3000/api/Cortes/
+
+GET {{api2}}
+
+###
+
+GET {{api}}
+
+###
+
+POST {{api}}
+Content-Type: application/json
+
+{
+    "productos": [
+        {
+            "nombre": "Proteína Aislada de Suero de Leche Zero Carb Sabor Chocolate con Cocoa 350g",
+            "cantidad": 4
+        }
+    ],
+    "tipoPago": "Efectivo"
+}
+
+###
+
+GET {{api}}
+
+###
+PUT {{api}}Coca
+Content-Type: application/json
+
+{
+    "precio": 30
+}
+
+###
+PUT {{api}}Coca
+Content-Type: application/json
+
+{
+    "tipo": "Azucar"
+}
+
+###
+PUT {{api}}Coca
+Content-Type: application/json
+
+{
+    "tipo": "Azucar"
+}
+
+
+###
+POST {{api}}
+Content-Type: application/json
+
+{
+    "img": "holi"
+}
+
+
+###
+PUT {{api}}Acyclovir
+Content-Type: application/json
+
+{
+    "precio": 0,
+    "tipo": "Wine - Riesling Alsace Ac 2",
+    "img": "http://dummyimage.com/241x100.png/cc0000/ffffff"
+}
+
+
+//"Wine - Riesling Alsace Ac 2"
+//http://dummyimage.com/241x100.png/cc0000/ffffff
+//https://m.media-amazon.com/images/I/61AzbFmx0HL._AC_SX569_.jpg
