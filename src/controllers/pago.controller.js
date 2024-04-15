@@ -7,6 +7,37 @@ export const getPagos = async (req, res) => {
     return res.json(pagos);
 }
 
+export const getPagosDiario = async (req, res) => {
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);  // Establece la fecha al comienzo del día actual.
+
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+    const pagos = await pago.find({fecha: {$gte: startOfDay, $lt: endOfDay}})
+
+    return res.json(pagos)
+}
+
+export const getPagosMes = async (req, res) => {
+    const { mes } = req.params;
+    const startOfMonth = new Date(Date.UTC(2023, mes - 1, 1)); // primer día del mes
+    const endOfMonth = new Date(Date.UTC(2023, mes, 1)); // primer día del siguiente mes
+    const pagos = await pago.find({ fecha: { $gte: startOfMonth, $lt: endOfMonth } });
+    return res.json(pagos)
+}
+
+export const getPagosA = async (req, res) => {
+    const { anio } = req.params;
+    const pagos = await pago.find({
+        $expr: {
+            $eq: [{ $year: "$fecha" }, anio]
+        }
+    });
+    return res.json(pagos)
+}
+
+
+
 export const addPago = async (req, res) => {
     const { productos, tipoPago } = req.body;
 
